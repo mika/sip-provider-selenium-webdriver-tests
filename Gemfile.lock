@@ -15,11 +15,12 @@ GEM
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.7.0)
     rubyzip (0.9.4)
-    selenium-webdriver (2.9.1)
+    selenium-webdriver (2.10.0)
       childprocess (>= 0.2.1)
       ffi (= 1.0.9)
       json_pure
       rubyzip
+    syntax (1.0.0)
 
 PLATFORMS
   ruby
@@ -27,3 +28,4 @@ PLATFORMS
 DEPENDENCIES
   rspec
   selenium-webdriver
+  syntax
