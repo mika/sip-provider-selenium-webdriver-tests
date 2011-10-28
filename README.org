@@ -1,0 +1,63 @@
+#+TITLE: README for sip-provider-selenium-webdriver-tests
+
+* Overview
+
+sip-provider-selenium-webdriver-tests is a tool to run automated tests
+against [[http://www.sipwise.com/][Sipwise NGCP]] (Sipwise Next Generation Communication Platform)
+using [[http://seleniumhq.org/][Selenium's]] [[http://selenium.googlecode.com/svn/trunk/docs/api/rb/Selenium/WebDriver.html][webdriver]] with [[http://rspec.info/][rspec]].
+
+NOTE: sip-provider-selenium-webdriver-tests is under construction.
+It aims to replace the existing Selenium IDE tests, providing features
+like control flow within the test suite as well as the option to run
+tests against the backend of Sipwise NGCP.
+
+* Dependencies
+
+- Ruby
+- Firefox
+- required gems see following section ('Installation instructions')
+
+* Installation instructions
+
+  : git clone git://github.com/mika/sip-provider-selenium-webdriver-tests.git
+
+If you have [[http://gembundler.com/][bundler]] available all you have to do is running:
+
+  : make install
+
+inside the sip-provider-selenium-webdriver-tests directory.  This will
+install the required gems into your _working_ directory.
+
+If you don't have bundler yet and are using Debian just run:
+
+  : sudo apt-get install gem2deb
+  : gem2deb bundler
+  : sudo dpkg -i ruby-bundler_*all.deb
+
+If you can't use bundler you've to install the selenium-webdriver and
+rspec gems and all their dependencies.
+
+* Usage
+
+Adjust configuration file _env.yml_ according to your needs. Point
+_admin_host_ and _csc_host_ to the system running the Sipwise NGCP.
+If you've a selenium server running and available you can use the
+remote mode (using 'mode: remote' in env.yml), otherwise the local
+mode (being the default) will execute the tests using Firefox on your
+local system.
+
+Execute the test suite via:
+
+  : make
+
+Generate a test suite report in HTML format:
+
+  : make html
+
+Run specific test(s) only, e.g. tests matching "subscriber" pattern:
+
+  : bundle exec rspec -e subscriber tests/admin_panel.rb
+
+* Author
+
+Michael Prokop <mprokop@sipwise.com>
